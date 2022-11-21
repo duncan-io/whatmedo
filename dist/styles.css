@@ -22,7 +22,13 @@
 
 .sidebar{
     background-color: green;
+    padding: 10px;
     /* max-width: 300px; */
+}
+
+.listItem:hover {
+    color: white;
+    cursor: pointer;
 }
 
 .content{

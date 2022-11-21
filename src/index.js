@@ -1,13 +1,18 @@
+(function (){
+    const sideBar = document.getElementById("sidebar")
 
-const sideBar = document.getElementById("sidebar")
-console.log(sideBar)
-const sideBarMain = ["Home", "This Week", "This Month", "Projects"];
+    const list = document.createElement("ul");
 
-sideBarMain.forEach(element => {
+    const sideBarMain = ["Home", "This Week", "This Month", "Projects"];
+    sideBarMain.forEach(element => {
 
-    let item = document.createElement("h3");
-    item.textContent = element;
-    item.onclick = ()=>console.log("do some shit")
-    sideBar.appendChild(item)
+        let item = document.createElement("li");
+        item.classList.add("listItem")
+        item.textContent = element;
+        item.onclick = ()=>console.log("do some shit")
+        list.appendChild(item)
 
-})
+    });
+
+    sideBar.appendChild(list)
+})();
