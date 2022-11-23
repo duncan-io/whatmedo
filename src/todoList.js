@@ -18,7 +18,7 @@ function toDoList (inputList){
             item.classList.toggle("checked");
         })
         let text = document.createElement("p");
-        text.textContent = element;
+        text.textContent = element.task;
         item.appendChild(check);
         item.appendChild(text);
         list.appendChild(item);
