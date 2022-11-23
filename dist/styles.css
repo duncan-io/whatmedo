@@ -21,17 +21,83 @@
 }
 
 .sidebar{
-    background-color: green;
     padding: 10px;
-    /* max-width: 300px; */
+    position: relative;
+}
+
+.sideBarList {
+    line-height: 2rem;
 }
 
 .listItem:hover {
-    color: white;
+    color: blue;
+    border-bottom: 1px solid black;
+    margin-bottom: -1px;
     cursor: pointer;
 }
 
 .content{
     background-color: blue;
     grid-column: auto;
+    padding: 2rem;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+.grey{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(160, 158, 158, 0.397);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addNew{
+    background-color: white;
+    min-width: 500px;
+    min-height: 200px;
+    padding: 10px;
+}
+
+.newbutton {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    font-size: 3rem;
+    font-weight: 900;
+    align-self: flex-end;
+    background-color: rgb(0, 247, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: box-shadow .3s, margin .3s;
+    cursor: pointer;
+    position: absolute;
+    bottom: 5%;
+    right: 10%;
+}
+
+.newbutton:hover{
+    animation-name: spin;
+    animation-duration: 100ms;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    margin-top: -2px;
+    margin-top: -2px;
+    box-shadow: 0px 10px 10px gray;
+    transition: box-shadow .3s, margin .3s;
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(90deg);
+    }
 }

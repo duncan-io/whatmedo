@@ -1,7 +1,10 @@
+import toDoList from "./todoList";
+
 (function (){
     const sideBar = document.getElementById("sidebar")
 
     const list = document.createElement("ul");
+    list.classList.add("sideBarList")
 
     const sideBarMain = ["Home", "This Week", "This Month", "Projects"];
     sideBarMain.forEach(element => {
@@ -16,3 +19,11 @@
 
     sideBar.appendChild(list)
 })();
+
+toDoList();
+
+// let newItemBox = document.getElementById("addNew");
+
+// newItemBox.addEventListener("click", presentNewBox);
+
+//presentNewBox function should pull up the item box and have options to create new tasks or projects
