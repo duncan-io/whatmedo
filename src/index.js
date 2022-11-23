@@ -1,4 +1,5 @@
 import toDoList from "./todoList";
+import newb from "./newItem";
 
 (function (){
     const sideBar = document.getElementById("sidebar")
@@ -20,7 +21,10 @@ import toDoList from "./todoList";
     sideBar.appendChild(list)
 })();
 
-toDoList();
+toDoList(["fuck", "you"]);
+
+newb();
+
 
 // let newItemBox = document.getElementById("addNew");
 
