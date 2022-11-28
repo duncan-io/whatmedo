@@ -1,13 +1,19 @@
 import toDoList from "./displayList";
 import newTask from "./newTaskWindow";
 
+
+//Try to set a current project so that project can be found and pushed to
+let currentProject = "Home"
+const newButton = document.getElementById("newbutton");
+newButton.addEventListener("click", () => newTask());
+
 (function (){
     const projects = [{name:"Home", list:[{task:"fuck", dueDate: [1995, 10, 24], priority: "High"}, {task:"you", dueDate: "08/10/1995", priority: "Medium"},]}, 
     {name:"This Week", list:[{task:"bitch", dueDate: [1995, 10, 24], priority: "High"}, {task:"bum", dueDate: "08/10/1995", priority: "Medium"},]}, 
     {name:"This Month", list:[]}, 
     {name:"Projects", list:[]}];
     const sideBar = document.getElementById("sidebar")
-    let currentProject = "Home"
+ 
     function display(project){
         let proj = projects.find(obj => {
             return obj.name === project
@@ -46,8 +52,6 @@ import newTask from "./newTaskWindow";
 })();
 
 
-const newButton = document.getElementById("newbutton");
-newButton.addEventListener("click", () => newTask());
 
 
 

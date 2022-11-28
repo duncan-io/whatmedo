@@ -34,9 +34,7 @@ function toDoList (inputList){
         text.textContent = element.task;
         let date = document.createElement("p");
         let result = format(new Date(element.dueDate), 'MM/dd/yyyy')
-        console.log(element.dueDate)
         date.textContent = result;
-        console.log(element.dueDate);
         left.appendChild(check);
         left.appendChild(text);
         right.appendChild(date);
