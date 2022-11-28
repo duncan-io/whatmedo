@@ -1,4 +1,4 @@
-import toDoList from "./todoList";
+import toDoList from "./displayList";
 import newTask from "./newItem";
 
 (function (){

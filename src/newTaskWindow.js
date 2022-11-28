@@ -1,5 +1,5 @@
 //Create and store check lists
-import toDoList from "./todoList";
+import toDoList from "./displayList";
 
 
 let todo = [{task:"fuck", dueDate: [1995, 10, 24], priority: "High"}, {task:"you", dueDate: "08/10/1995", priority: "Medium"},];
