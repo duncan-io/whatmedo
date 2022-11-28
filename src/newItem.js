@@ -2,10 +2,9 @@
 import toDoList from "./todoList";
 
 
-let todo = [{task:"fuck", dueDate: "10/24", priority: "High"}, {task:"you", dueDate: "08/10", priority: "Medium"},];
+let todo = [{task:"fuck", dueDate: [1995, 10, 24], priority: "High"}, {task:"you", dueDate: "08/10/1995", priority: "Medium"},];
 
 let newItem = function (task, dueDate, priority){
-
     return{task, dueDate, priority}
 };
 
@@ -66,6 +65,7 @@ function newTask (){
     submit.setAttribute("type", "button")
     submit.textContent = "Add Item"
     submit.addEventListener("click", () => newTaskSubumission(taskName.value, date.value, "test"))
+    //test === priority level. Add in functionality to accept that info
 
     taskLabel.appendChild(taskName)
     form.appendChild(taskLabel)
@@ -91,6 +91,10 @@ function newTaskSubumission(task, dueDate, priority) {
         content.removeChild(content.firstChild);
     }
     toDoList(todo);
+    const newItemBox = document.getElementById("addNew");
+    while (newItemBox.firstChild) {
+        newItemBox.removeChild(newItemBox.firstChild);
+    }
     const background = document.getElementById("backgroundWrapper")
     background.classList.toggle("hidden")
 

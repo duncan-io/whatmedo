@@ -21,9 +21,10 @@ import newTask from "./newItem";
     sideBar.appendChild(list)
 })();
 
-toDoList([{task:"fuck"},{task:"you"}]);
 
-newTask();
+const newButton = document.getElementById("newbutton");
+newButton.addEventListener("click", () => newTask());
+
 
 
 // let newItemBox = document.getElementById("addNew");
