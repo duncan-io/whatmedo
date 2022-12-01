@@ -1,12 +1,16 @@
 //Create and store check lists
-import toDoList from "./displayList";
+import displayList from "./displayList";
+import {currentProject, projects} from "./index.js"
 
 
-let todo = [{task:"fuck", dueDate: [1995, 10, 24], priority: "High"}, {task:"you", dueDate: "08/10/1995", priority: "Medium"},];
-
-let newItem = function (task, dueDate, priority){
-    return{task, dueDate, priority}
+ function todo(project){
+    let proj = projects.find(obj => {
+        return obj.name === project
+    })
+    
 };
+
+
 
 function newTask (){
     const background = document.getElementById("backgroundWrapper")
@@ -64,7 +68,7 @@ function newTask (){
     const submit = document.createElement("button");
     submit.setAttribute("type", "button")
     submit.textContent = "Add Item"
-    submit.addEventListener("click", () => newTaskSubumission(taskName.value, date.value, "test"))
+    submit.addEventListener("click", () => {return taskName.value, date.value, "test"})
     //test === priority level. Add in functionality to accept that info
 
     taskLabel.appendChild(taskName)
@@ -84,29 +88,7 @@ function newTask (){
     newItemBox.appendChild(content)
 };
 
-function newTaskSubumission(task, dueDate, priority) {
-    let content = document.getElementById("content")
-    addToList(newItem(task, dueDate, priority));
-    while (content.firstChild) {
-        content.removeChild(content.firstChild);
-    }
-    toDoList(todo);
-    const newItemBox = document.getElementById("addNew");
-    while (newItemBox.firstChild) {
-        newItemBox.removeChild(newItemBox.firstChild);
-    }
-    const background = document.getElementById("backgroundWrapper")
-    background.classList.toggle("hidden")
+//move to displayList? That way you can select the actual list potentially from there
 
-}
-
-
-
-
-
-
-function addToList (obj) {
-    todo.push(obj);
-}
 
 export default newTask

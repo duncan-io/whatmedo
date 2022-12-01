@@ -1,8 +1,11 @@
 import format from "date-fns/format";
+import newTask from "./newTaskWindow";
+let newItem = function (task, dueDate, priority){
+    return{task, dueDate, priority}
+};
 
-function toDoList (inputList){
+function displayList (inputList){
 
-    const todo = inputList;
     let content = document.getElementById("content")
     const list = document.createElement("ul")
 
@@ -11,7 +14,7 @@ function toDoList (inputList){
 
     
 
-    todo.forEach(element => {
+    inputList.forEach(element => {
         let item = document.createElement("li");
         item.classList.add("checklistItem");
         if (element.priority === "High"){
@@ -42,10 +45,34 @@ function toDoList (inputList){
         item.appendChild(right);
         list.appendChild(item)
     });
+    
+    let addNew = document.createElement("button");
+    addNew.setAttribute("type", "button")
+    addNew.textContent = "Add New Item"
+    addNew.addEventListener("click", () => newTaskSubmission().bind(inputList))
 
     content.appendChild(list);
+    content.appendChild(addNew)
 
 }
 
-export default toDoList
+function newTaskSubmission() {
+    console.log(this)
+    let obj = newItem(newTask())
+    let content = document.getElementById("content")
+    this.list.push(obj);
+    while (content.firstChild) {
+        content.removeChild(content.firstChild);
+    }
+    displayList(inputList);
+    const newItemBox = document.getElementById("addNew");
+    while (newItemBox.firstChild) {
+        newItemBox.removeChild(newItemBox.firstChild);
+    }
+    const background = document.getElementById("backgroundWrapper")
+    background.classList.toggle("hidden")
+
+}
+
+export default displayList
 
