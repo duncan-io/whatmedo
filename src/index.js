@@ -1,5 +1,6 @@
 import displayList from "./displayList";
 import newTask from "./newTaskWindow";
+import allProjects from "./projectManager";
 
 
 //Try to set a current project so that project can be found and pushed to
@@ -11,32 +12,26 @@ import newTask from "./newTaskWindow";
 // {name:"This Month", list:[]}, 
 // {name:"Projects", list:[]}];
 
-// let currentProject = "Home"
-// console.log(currentProject)
+let id = 1;
 
 // (function (){
+    console.log(allProjects)
 
     const sideBar = document.getElementById("sidebar")
- 
-    function display(project){
-        let proj = projects.find(obj => {
-            return obj.name === project
-        })
-        displayList(proj.list)
-    }
-    display(currentProject);
+
+    // display(currentProject);
     const list = document.createElement("ul");
     list.classList.add("sideBarList")
 
   
-    projects.forEach(element => {
+    allProjects.forEach(element => {
 
         let item = document.createElement("li");
         item.classList.add("listItem")
         item.textContent = element.name;
         item.onclick = ()=>{
-            currentProject = element.name;
-            console.log(currentProject)
+            console.log(element.list)
+            setId(element.id)
             let content = document.getElementById("content")
             while (content.firstChild) {
                 content.removeChild(content.firstChild);
@@ -58,10 +53,8 @@ import newTask from "./newTaskWindow";
 
 
 
-export default {currentProject, projects}
+let newItemBox = document.getElementById("addNew");
 
-// let newItemBox = document.getElementById("addNew");
-
-// newItemBox.addEventListener("click", presentNewBox);
+newItemBox.addEventListener("click", newTask);
 
 //presentNewBox function should pull up the item box and have options to create new tasks or projects

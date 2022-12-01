@@ -1,8 +1,7 @@
 import format from "date-fns/format";
 import newTask from "./newTaskWindow";
-let newItem = function (task, dueDate, priority){
-    return{task, dueDate, priority}
-};
+import {allProjects, taskCreator} from "./projectManager"
+
 
 function displayList (inputList){
 
@@ -17,15 +16,16 @@ function displayList (inputList){
     inputList.forEach(element => {
         let item = document.createElement("li");
         item.classList.add("checklistItem");
-        if (element.priority === "High"){
-            item.classList.add("high")
-        } else if(element.priority === "Medium"){
-            item.classList.add("medium")
-        }
         let left = document.createElement("div");
         left.classList.add("left");
+        let leftInfo = document.createElement("div");
+        left.classList.add("leftInfo");
         let right = document.createElement("div");
         right.classList.add("right")
+
+        let description = document.createElement("p");
+        description.classList.add("description")
+        description.textContent = element.description;
         
         let check = document.createElement("input");
         check.setAttribute("type", "checkbox");
@@ -34,33 +34,38 @@ function displayList (inputList){
             item.classList.toggle("noBorder")
         })
         let text = document.createElement("p");
-        text.textContent = element.task;
+        text.textContent = element.name;
         let date = document.createElement("p");
-        let result = format(new Date(element.dueDate), 'MM/dd/yyyy')
+        let result = format(new Date(element.date), 'MM/dd/yyyy')
         date.textContent = result;
         left.appendChild(check);
-        left.appendChild(text);
+        leftInfo.appendChild(text);
+        leftInfo.appendChild(description);
+        left.appendChild(leftInfo);
         right.appendChild(date);
         item.appendChild(left);
         item.appendChild(right);
         list.appendChild(item)
+
+        let addNew = document.createElement("button");
+        addNew.setAttribute("type", "button")
+        addNew.textContent = "Add New Item"
+        addNew.addEventListener("click", () => newTaskSubmission(element.id))
+    
+        content.appendChild(list);
+        content.appendChild(addNew)
     });
     
-    let addNew = document.createElement("button");
-    addNew.setAttribute("type", "button")
-    addNew.textContent = "Add New Item"
-    addNew.addEventListener("click", () => newTaskSubmission().bind(inputList))
 
-    content.appendChild(list);
-    content.appendChild(addNew)
 
 }
 
-function newTaskSubmission() {
-    console.log(this)
-    let obj = newItem(newTask())
+function newTaskSubmission(id) {
+   let proj = findProj(id)
+
+    let obj = taskCreator(newTask())
     let content = document.getElementById("content")
-    this.list.push(obj);
+    proj.list.push(obj);
     while (content.firstChild) {
         content.removeChild(content.firstChild);
     }
@@ -72,6 +77,12 @@ function newTaskSubmission() {
     const background = document.getElementById("backgroundWrapper")
     background.classList.toggle("hidden")
 
+}
+function findProj(id){
+    let idNum = allProjects.find(element => {
+         element.id === id
+    })
+    return idNum
 }
 
 export default displayList
